@@ -30,7 +30,8 @@ function JobDetails() {
   return (
     <div className="job-details-container">
       <h2>{job.title}</h2>
-      <p>{job.description}</p>
+      {/* Not recommended but did it to show the description in a pretty manner */}
+      <div dangerouslySetInnerHTML={{ __html: job.description }} />
       <a href={job.applicationUrl} target="_blank" rel="noopener noreferrer">
         <button>Apply</button>
       </a>

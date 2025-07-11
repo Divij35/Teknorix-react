@@ -7,6 +7,7 @@ import {
   TwitterShareButton,
 } from 'react-share';
 import './styles/ShareButtons.scss';
+import './styles/JobDetails.scss';
 
 function JobDetails() {
   const { id } = useParams();
@@ -27,7 +28,7 @@ function JobDetails() {
   if (!job) return <p>Loading...</p>;
 
   return (
-    <div>
+    <div className="job-details-container">
       <h2>{job.title}</h2>
       <p>{job.description}</p>
       <a href={job.applicationUrl} target="_blank" rel="noopener noreferrer">

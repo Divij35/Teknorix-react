@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import './styles/JobCard.scss';
 
 function JobCard({ job }) {
   const navigate = useNavigate();

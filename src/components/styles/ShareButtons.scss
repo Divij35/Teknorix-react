@@ -1,0 +1,44 @@
+.facebook-btn {
+  background: #3b5998;
+  color: #fff;
+  padding: 0.5em 1.2em;
+  border: none;
+  border-radius: 4px;
+  margin-right: 0.5em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+  &:hover {
+    background: #2d4373;
+  }
+}
+
+.linkedin-btn {
+  background: #0077b5;
+  color: #fff;
+  padding: 0.5em 1.2em;
+  border: none;
+  border-radius: 4px;
+  margin-right: 0.5em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+  &:hover {
+    background: #005983;
+  }
+}
+
+.twitter-btn {
+  background: #1da1f2;
+  color: #fff;
+  padding: 0.5em 1.2em;
+  border: none;
+  border-radius: 4px;
+  margin-right: 0.5em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+  &:hover {
+    background: #0d8ddb;
+  }
+} 

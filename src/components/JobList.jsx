@@ -4,31 +4,52 @@ import JobCard from '../components/JobCard';
 import FilterBar from '../components/FilterBar';
 
 function JobList() {
+  const [allJobs, setAllJobs] = useState([]);
   const [jobs, setJobs] = useState([]);
   const [filters, setFilters] = useState({});
   const [lookups, setLookups] = useState({});
 
   useEffect(() => {
     fetchJobs();
-  }, [filters]);
+  }, []);
 
   useEffect(() => {
-  const fetchLookups = async () => {
-    const department = await getDepartments();
-    const location = await getLocations();
-    const fun = await getFunctions();
+    const fetchLookups = async () => {
+      const department = await getDepartments();
+      const location = await getLocations();
+      const fun = await getFunctions();
 
-    setLookups({
-      departments: department,
-      locations: location,
-      functions: fun,
-    });
-  };
-  fetchLookups();
-}, []);
+      setLookups({
+        departments: department,
+        locations: location,
+        functions: fun,
+      });
+    };
+    fetchLookups();
+  }, []);
+
+  useEffect(() => {
+    let filtered = allJobs;
+    if (filters.department) {
+      filtered = filtered.filter(job => job.department?.title === filters.department);
+    }
+    if (filters.location) {
+      filtered = filtered.filter(job => job.location?.title === filters.location);
+    }
+    if (filters.function) {
+      filtered = filtered.filter(job => job.function?.title === filters.function);
+    }
+    if (filters.search) {
+      filtered = filtered.filter(job =>
+        job.title.toLowerCase().includes(filters.search.toLowerCase())
+      );
+    }
+    setJobs(filtered);
+  }, [filters, allJobs]);
 
   const fetchJobs = async () => {
-    const res = await getJobs(filters);
+    const res = await getJobs(); // Fetching all the jobs without filters/lookups
+    setAllJobs(res);
     setJobs(res);
   };
 
